@@ -39,7 +39,7 @@ btnVaciar.addEventListener('click', function(e) {
     txtRespuesta.value = "Vector vaciado";
 });
 
-// 3. Mostrar vector en la tabla - AQUÍ ESTABA EL ERROR, YA CORREGIDO
+// 3. Mostrar vector en la tabla
 function mostrarVector() {
     const tabla = document.getElementById('id-table-vector-numerico');
 
@@ -57,7 +57,7 @@ function mostrarVector() {
         celda.textContent = vectorNumerico[i];
     }
 
-    // 4. Rellenamos hasta 10 para que no se descuadre la tabla
+    
     for (let i = vectorNumerico.length; i < 10; i++) {
         const celda = fila.insertCell();
         celda.textContent = '';
@@ -179,9 +179,7 @@ btnModa.addEventListener('click', function(e) {
     txtRespuesta.value = "Moda: " + moda + " (se repite " + maxRepeticiones + " veces)";
 });
 
-// ================= FUNCIONES QUE FALTABAN =================
 
-// Función para copiar vector - básica con for
 function copiarVector(arr) {
     let nuevo = [];
     for(let i = 0; i < arr.length; i++) {
@@ -190,7 +188,7 @@ function copiarVector(arr) {
     return nuevo;
 }
 
-// Orden Burbuja - para Mediana y botón Burbuja
+
 function ordenarBurbuja(arr, tipo) {
     let temp = copiarVector(arr);
 
@@ -214,7 +212,7 @@ function ordenarBurbuja(arr, tipo) {
     return temp;
 }
 
-// Orden Selección - el que pide el profe
+// Orden Selección 
 function ordenarSeleccion() {
     let temp = copiarVector(vectorNumerico);
 
@@ -234,7 +232,6 @@ function ordenarSeleccion() {
     mostrarVector();
 }
 
-// Conectar botones de ordenamiento
 btnOrdenSeleccion.addEventListener('click', ordenarSeleccion);
 
 btnOrdenBurbuja.addEventListener('click', function() {
