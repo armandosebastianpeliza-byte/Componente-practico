@@ -1,6 +1,7 @@
 let vectorNumerico = [];
 console.log("JS cargado correctamente");
 
+// Capturo todos los elementos del HTML para usarlos después
 let selectDimension = document.getElementById('select-dimension-arreglo');
 let btnCargar = document.getElementById('btn-cargar-vector');
 let btnVaciar = document.getElementById('btn-vaciar-vector');
@@ -17,11 +18,12 @@ let selectOrden = document.getElementById('select-tipo-orden');
 let txtRespuesta = document.getElementById('id-txt-respuesta');
 let tablaVector = document.getElementById('id-table-vector-numerico');
 
-// 1. Cargar vector
+// 1. Cargar vector con números aleatorios del 1 al 100
 btnCargar.addEventListener('click', function(e) {
     let dimension = parseInt(selectDimension.value);
     vectorNumerico = [];
 
+    // Lleno el vector usando ciclo for. Random para generar datos de prueba
     for (let i = 0; i < dimension; i++) {
         vectorNumerico[i] = Math.floor(Math.random() * 100) + 1;
     }
@@ -30,7 +32,7 @@ btnCargar.addEventListener('click', function(e) {
     txtRespuesta.value = "Vector cargado con " + dimension + " elementos";
 });
 
-// 2. Vaciar vector
+// 2. Vaciar vector poniendo todos en 0
 btnVaciar.addEventListener('click', function(e) {
     for (let i = 0; i < vectorNumerico.length; i++) {
         vectorNumerico[i] = 0;
@@ -39,32 +41,31 @@ btnVaciar.addEventListener('click', function(e) {
     txtRespuesta.value = "Vector vaciado";
 });
 
-// 3. Mostrar vector en la tabla
+// 3. Función para mostrar el vector en la tabla HTML
 function mostrarVector() {
     const tabla = document.getElementById('id-table-vector-numerico');
 
-    // 1. Si ya existe una fila de datos, la borramos. Es la fila 1
-    if (tabla.rows.length > 2) { // >2 porque fila 0 = titulo, fila 1 = datos viejos
+    // Borro la fila anterior si existe para no duplicar datos
+    if (tabla.rows.length > 2) {
         tabla.deleteRow(1);
     }
 
-    // 2. Insertamos la nueva fila de datos justo después del titulo
     const fila = tabla.insertRow(1);
 
-    // 3. Llenamos con los números del vector
+    // Recorro el vector y creo una celda por cada número
     for (let i = 0; i < vectorNumerico.length; i++) {
         const celda = fila.insertCell();
         celda.textContent = vectorNumerico[i];
     }
 
-    
+    // Completo con celdas vacías hasta 10 para que la tabla se vea pareja
     for (let i = vectorNumerico.length; i < 10; i++) {
         const celda = fila.insertCell();
         celda.textContent = '';
     }
 }
 
-// 4. Numero Mayor
+// 4. Buscar valor máximo recorriendo todo el vector
 btnMayor.addEventListener('click', function(e) {
     if (vectorNumerico.length == 0) {
         txtRespuesta.value = "Error: Vector vacio";
@@ -72,6 +73,7 @@ btnMayor.addEventListener('click', function(e) {
     }
     let mayor = vectorNumerico[0];
     let posicion = 0;
+    // Comparo cada elemento con el mayor actual
     for (let i = 1; i < vectorNumerico.length; i++) {
         if (vectorNumerico[i] > mayor) {
             mayor = vectorNumerico[i];
@@ -81,7 +83,7 @@ btnMayor.addEventListener('click', function(e) {
     txtRespuesta.value = "Valor Maximo: " + mayor + " (posicion " + posicion + ")";
 });
 
-// 5. Numero Menor
+// 5. Buscar valor mínimo, misma lógica que mayor pero al revés
 btnMenor.addEventListener('click', function(e) {
     if (vectorNumerico.length == 0) {
         txtRespuesta.value = "Error: Vector vacio";
@@ -98,7 +100,7 @@ btnMenor.addEventListener('click', function(e) {
     txtRespuesta.value = "Valor Minimo: " + menor + " (posicion " + posicion + ")";
 });
 
-// 6. Suma
+// 6. Sumar todos los elementos del vector
 btnSuma.addEventListener('click', function(e) {
     if (vectorNumerico.length == 0) {
         txtRespuesta.value = "Error: Vector vacio";
@@ -111,7 +113,7 @@ btnSuma.addEventListener('click', function(e) {
     txtRespuesta.value = "Suma Total: " + suma;
 });
 
-// 7. Producto
+// 7. Multiplicar todos los elementos. Empiezo en 1 porque 0 anula todo
 btnProducto.addEventListener('click', function(e) {
     if (vectorNumerico.length == 0) {
         txtRespuesta.value = "Error: Vector vacio";
@@ -124,7 +126,7 @@ btnProducto.addEventListener('click', function(e) {
     txtRespuesta.value = "Producto Total: " + producto;
 });
 
-// 8. Media
+// 8. Calcular media = suma total dividido entre cantidad de elementos
 btnMedia.addEventListener('click', function(e) {
     if (vectorNumerico.length == 0) {
         txtRespuesta.value = "Error: Vector vacio";
@@ -138,7 +140,7 @@ btnMedia.addEventListener('click', function(e) {
     txtRespuesta.value = "Media: " + media.toFixed(2);
 });
 
-// 9. Mediana
+// 9. Mediana: valor del medio. Si es par, promedio de los 2 del centro
 btnMediana.addEventListener('click', function(e) {
     if (vectorNumerico.length == 0) {
         txtRespuesta.value = "Error: Vector vacio";
@@ -156,7 +158,7 @@ btnMediana.addEventListener('click', function(e) {
     txtRespuesta.value = "Mediana: " + mediana.toFixed(2);
 });
 
-// 10. Moda
+// 10. Moda: número que más se repite. Uso 2 ciclos para contar repeticiones
 btnModa.addEventListener('click', function(e) {
     if (vectorNumerico.length == 0) {
         txtRespuesta.value = "Error: Vector vacio";
@@ -179,7 +181,7 @@ btnModa.addEventListener('click', function(e) {
     txtRespuesta.value = "Moda: " + moda + " (se repite " + maxRepeticiones + " veces)";
 });
 
-
+// Función auxiliar para copiar vectores sin afectar el original
 function copiarVector(arr) {
     let nuevo = [];
     for(let i = 0; i < arr.length; i++) {
@@ -188,7 +190,7 @@ function copiarVector(arr) {
     return nuevo;
 }
 
-
+// Algoritmo Burbuja: compara pares y los va intercambiando hasta ordenar
 function ordenarBurbuja(arr, tipo) {
     let temp = copiarVector(arr);
 
@@ -212,7 +214,7 @@ function ordenarBurbuja(arr, tipo) {
     return temp;
 }
 
-// Orden Selección 
+// Algoritmo Selección: busca el menor y lo pone al inicio, repite
 function ordenarSeleccion() {
     let temp = copiarVector(vectorNumerico);
 

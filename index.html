@@ -60,24 +60,34 @@ table td {
 </tbody>
 <tfoot>
 <tr>
+    <!-- Genera números aleatorios según la dimensión elegida -->
     <td colspan="5"><button id="btn-cargar-vector">Cargar Vector</button></td>
+    <!-- Reinicia el vector poniendo todos en 0 -->
     <td colspan="5"><button id="btn-vaciar-vector">Vaciar Vector</button></td>
 </tr>
 <tr>
+    <!-- Busca el valor más alto del vector -->
     <td colspan="5"><button id="btn-numero-mayor">Numero Mayor</button></td>
+    <!-- Busca el valor más bajo del vector -->
     <td colspan="5"><button id="btn-numero-menor">Numero Menor</button></td>
 </tr>
 <tr>
+    <!-- Suma todos los elementos del vector -->
     <td colspan="5"><button id="btn-sumar-valores">Suma de Valores</button></td>
+    <!-- Multiplica todos los elementos del vector -->
     <td colspan="5"><button id="btn-producto-vector">Producto de Valores</button></td>
 </tr>
 <tr>
+    <!-- Calcula el valor que más se repite -->
     <td colspan="3"><button id="btn-calcular-moda">Moda</button></td>
+    <!-- Calcula el promedio de todos los valores -->
     <td colspan="3"><button id="btn-calcular-media">Media</button></td>
+    <!-- Calcula el valor del medio del vector ordenado -->
     <td colspan="4"><button id="btn-calcular-mediana">Mediana</button></td>
 </tr>
 <!-- ESTO ES LO QUE FALTABA -->
 <tr>
+    <!-- Ordena el vector usando algoritmo de selección -->
     <td colspan="5"><button id="btn-orden-seleccion">Orden Selección</button></td>
     <td colspan="2">
         <select id="select-tipo-orden">
@@ -85,6 +95,7 @@ table td {
             <option value="DESC">DESC</option>
         </select>
     </td>
+    <!-- Ordena el vector usando algoritmo burbuja -->
     <td colspan="3"><button id="btn-orden-burbuja">Orden Burbuja</button></td>
 </tr>
 </tfoot>
