@@ -19,6 +19,7 @@ table td {
 <tr>
     <td>Dimension del arreglo:</td>
     <td>
+        <!-- Select Dimension: elige el tamaño del vector -->
         <select id="select-dimension-arreglo">
             <option value="4">4</option>
             <option value="5">5</option>
@@ -36,7 +37,10 @@ table td {
 </tr>
 <tr>
     <td>Ingrese valor a buscar:</td>
-    <td><input type="text" name="" id="id-valor-busqueda" maxlength="4" size="5"></td>
+    <td>
+        <!-- Input Buscar: aquí se escribe el valor a buscar en el vector -->
+        <input type="text" name="" id="id-txt-buscar" maxlength="4" size="5">
+    </td>
 </tr>
 </tbody>
 </table>
@@ -48,55 +52,56 @@ table td {
     <td colspan="10">Vector numerico de N elementos</td>
 </tr>
 </thead>
-<tbody>
-<tr>
-    <td></td><td></td><td></td><td></td><td></td>
-    <td></td><td></td><td></td><td></td><td></td>
-</tr>
-<tr>
-    <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-    <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-</tr>
+<tbody id="id-body-vector">
+<!-- CAMBIO 1: tbody vacío con id. El JS pinta las 2 filas con for -->
 </tbody>
 <tfoot>
 <tr>
-    <!-- Genera números aleatorios según la dimensión elegida -->
+    <!-- Botón Cargar Vector: genera números aleatorios en el vector -->
     <td colspan="5"><button id="btn-cargar-vector">Cargar Vector</button></td>
-    <!-- Reinicia el vector poniendo todos en 0 -->
+    <!-- Botón Vaciar Vector: limpia el vector y deja ceros en la tabla -->
     <td colspan="5"><button id="btn-vaciar-vector">Vaciar Vector</button></td>
 </tr>
 <tr>
-    <!-- Busca el valor más alto del vector -->
+    <!-- Botón Presentar Vector: muestra en tabla los valores del vector -->
+    <td colspan="10" align="center"><button id="btn-presentar-vector">Presentar Vector</button></td>
+</tr>
+<tr>
+    <!-- Botón Número Mayor: busca el valor más alto del vector -->
     <td colspan="5"><button id="btn-numero-mayor">Numero Mayor</button></td>
-    <!-- Busca el valor más bajo del vector -->
+    <!-- Botón Número Menor: busca el valor más bajo del vector -->
     <td colspan="5"><button id="btn-numero-menor">Numero Menor</button></td>
 </tr>
 <tr>
-    <!-- Suma todos los elementos del vector -->
+    <!-- Botón Suma de Valores: suma todos los elementos del vector -->
     <td colspan="5"><button id="btn-sumar-valores">Suma de Valores</button></td>
-    <!-- Multiplica todos los elementos del vector -->
+    <!-- Botón Producto de Valores: multiplica todos los elementos del vector -->
     <td colspan="5"><button id="btn-producto-vector">Producto de Valores</button></td>
 </tr>
 <tr>
-    <!-- Calcula el valor que más se repite -->
+    <!-- Botón Moda: encuentra el número que más se repite -->
     <td colspan="3"><button id="btn-calcular-moda">Moda</button></td>
-    <!-- Calcula el promedio de todos los valores -->
+    <!-- Botón Media: calcula el promedio del vector -->
     <td colspan="3"><button id="btn-calcular-media">Media</button></td>
-    <!-- Calcula el valor del medio del vector ordenado -->
+    <!-- Botón Mediana: calcula el valor del centro del vector ordenado -->
     <td colspan="4"><button id="btn-calcular-mediana">Mediana</button></td>
 </tr>
-<!-- ESTO ES LO QUE FALTABA -->
 <tr>
-    <!-- Ordena el vector usando algoritmo de selección -->
+    <!-- Botón Orden Selección: ordena el vector de menor a mayor -->
     <td colspan="5"><button id="btn-orden-seleccion">Orden Selección</button></td>
     <td colspan="2">
+        <!-- Select Orden: elige si ordenar ascendente o descendente -->
         <select id="select-tipo-orden">
             <option value="ASC">ASC</option>
             <option value="DESC">DESC</option>
         </select>
     </td>
-    <!-- Ordena el vector usando algoritmo burbuja -->
+    <!-- Botón Orden Burbuja: ordena el vector según ASC o DESC -->
     <td colspan="3"><button id="btn-orden-burbuja">Orden Burbuja</button></td>
+</tr>
+<tr>
+    <!-- Botón Buscar Valor: busca si el valor existe en el vector -->
+    <td colspan="5"><button id="btn-buscar-valor">Buscar Valor</button></td>
 </tr>
 </tfoot>
 </table>
@@ -111,6 +116,10 @@ table td {
 <tr>
     <td>Resultado:</td>
     <td colspan="2"><input type="text" id="id-txt-respuesta" size="70"></td>
+</tr>
+<tr>
+    <td>Resultado Búsqueda:</td>
+    <td colspan="2" id="lbl-resultado"></td>
 </tr>
 </tbody>
 </table>
